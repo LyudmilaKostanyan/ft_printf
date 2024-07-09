@@ -16,13 +16,10 @@ int	ft_putstr_fd(char *s)
 {
 	int		size;
 	int		i;
-	char	*s1;
 
-	s1 = "(null)";
 	i = -1;
 	if (s == NULL)
-		while (++i < 6)
-			write(1, &s1[i], 1);
+		write(1, "(null)", 6);
 	else
 	{
 		size = ft_strlen(s);

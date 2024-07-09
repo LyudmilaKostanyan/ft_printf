@@ -67,7 +67,7 @@ static void	check(int *count, char c, va_list args)
 	}
 }
 
-static int	f(const char *s, va_list	args, int i)
+static int	read_and_print(const char *s, va_list	args, int i)
 {
 	int	count;
 
@@ -78,7 +78,8 @@ static int	f(const char *s, va_list	args, int i)
 		{
 			if (!s[i + 1])
 				return (count);
-			while (s[i + 1] && ft_strchr("\\cspdiuxX%\n\t\f\r\v\a\b\?\"", s[i + 1]) == -1)
+			while (s[i + 1] && ft_strchr("\\cspdiuxX%\n\t\f\r\v\a\b\?\"",
+					s[i + 1]) == -1)
 				i++;
 			if (ft_strchr("\\\n\t\f\r\v\a\b\?\"", s[i + 1]) >= 0 && ++count)
 				ft_putchar_fd(s[++i]);
@@ -103,7 +104,7 @@ int	ft_printf(const char *s, ...)
 
 	i = 0;
 	va_start(args, s);
-	count = f(s, args, i);
+	count = read_and_print(s, args, i);
 	va_end(args);
 	return (count);
 }
